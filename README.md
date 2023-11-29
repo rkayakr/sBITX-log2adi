@@ -1,5 +1,6 @@
 # sBITX-log2adi
-C program to query sBITX log db and export data in an ADIF format file for use in another logger, upload to LOTW
+C program to query sBITX log db and export data in an ADIF format file for use in another logger, upload to LOTW etc.
+
 promts user for start and end QSO IDs to process
  
 written by Bob Benedict, KD8CGH, November 2023 
