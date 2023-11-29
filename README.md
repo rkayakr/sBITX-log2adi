@@ -1,4 +1,3 @@
-# sBITX-log2adi
 
  C program to query sBITX log db and export data in an ADIF format file for use in another logger, upload to LOTW ...
  promts user for start and end QSO IDs to process
@@ -12,17 +11,27 @@
  BY: credit must be given to the creator.
  
   compile with sqlite3 library
- gcc -Wall -o "log2adi" "log2adi.c" -lsqlite3 
-    yes - you get warnings you can ignore
+  
+    gcc -Wall -o "log2adi" "log2adi.c" -lsqlite3
  
- execute by tying ./log2adi from terminal
+yes - you get warnings you can ignore
+ 
+ execute by tying
+ 
+     ./log2adi
+     
+ from terminal and answering promots for start and end IDs
+ 
  creates and fills export.adi file and echos exports to terminal
 
  
  note: I made some guesses in the db to ADIF mapping
-   exch_sent -> STX_String  transmit exchange information
-   exch_recv -> STR_String  receive exchange information
-   tx_id -> STX  transmit serial number or exchange
+ exch_sent -> STX_String  transmit exchange information
+   
+exch_recv -> STR_String  receive exchange information
+   
+tx_id -> STX  transmit serial number or exchange
+   
  also arbitrary 90 character limit on fields including comments
  
 
