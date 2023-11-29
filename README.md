@@ -18,6 +18,7 @@ compile with sqlite3 library
 yes - you get warnings you can ignore
 
  execute by tying ./log2adi from terminal
+ 
  creates and fills export.adi file and echos exports to terminal
  
  note: I made some guesses in the db to ADIF mapping
