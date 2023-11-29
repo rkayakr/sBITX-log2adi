@@ -12,7 +12,8 @@ written by Bob Benedict, KD8CGH, November 2023
  BY: credit must be given to the creator.
  
 compile with sqlite3 library
-   gcc -Wall -o "log2adi" "log2adi.c" -lsqlite 
+   gcc -Wall -o "log2adi" "log2adi.c" -lsqlite
+   
     yes - you get warnings you can ignore
 
  execute by tying ./log2adi from terminal
