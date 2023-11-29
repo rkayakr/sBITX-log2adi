@@ -22,7 +22,11 @@ yes - you get warnings you can ignore
  creates and fills export.adi file and echos exports to terminal
  
  note: I made some guesses in the db to ADIF mapping
+ 
    exch_sent -> STX_String  transmit exchange information
+   
    exch_recv -> STR_String  receive exchange information
+   
    tx_id -> STX  transmit serial number or exchange
+   
 also arbitrary 90 character limit on fields including comments
