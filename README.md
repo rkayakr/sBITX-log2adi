@@ -6,7 +6,7 @@
  
  written by Bob Benedict, KD8CGH, November 2023 
  
- version 1.0
+ version 1.1
  
  released under creative commons license BY
  This license enables reusers to distribute, remix, adapt, and build upon the material in any medium or format, 
@@ -24,7 +24,7 @@
      
  from terminal and answering promots for start and end IDs 
  
- creates and fills export.adi file and echos exports to terminal
+ creates and fills export_startID_endID.adi file 
 
  
  note: I made some guesses in the db to ADIF mapping

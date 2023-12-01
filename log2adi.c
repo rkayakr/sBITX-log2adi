@@ -4,7 +4,7 @@
 * 
 * written by Bob Benedict, KD8CGH, November 2023 
 * 
-* version 1.0
+* version 1.1
 * 
 * released under creative commons license BY
 * This license enables reusers to distribute, remix, adapt, and build upon the material in any medium or format, 
@@ -15,7 +15,7 @@
 *  compile with sqlite3 library
 * gcc -Wall -o "log2adi" "log2adi.c" -lsqlite3 
 * execute by tying ./log2adi from terminal
-* creates and fills export.adi file and echos exports to terminal
+* creates and fills export_startID_endID.adi file 
 *
 * note: I made some guesses in the db to ADIF mapping
 *   exch_sent -> STX_String  transmit exchange information
@@ -148,20 +148,21 @@ static int callback(void *export, int argc, char **argv, char **azColName){
 			strcat(add,end);  // reformat time to add 00 seconds
 			lenadd=strlen(add);
 		  }
-	     printf("<%s:%d>%s ", names[i], lenadd-1, add);
+//	     printf("<%s:%d>%s ", names[i], lenadd-1, add);
 	     fprintf(export,"<%s:%d>%s ", names[i], lenadd-1, add);
 
 		}
 	}  
 
 	fprintf(export,"<EOR>\n");
-	printf("\n");
+//	printf("\n");
 	return 0;
 }
 
 int main(int argc, char* argv[]) {
 	sqlite3 *db;
 	char sqlstr[60] = {'\0'};
+	char buff[40] = {'\0'};
 	char *zErrMsg = 0;
 	int rc;
 	char *sql;
@@ -205,7 +206,8 @@ int main(int argc, char* argv[]) {
 	endID++; // include endID
  
  // open output file  
-   	FILE *export = fopen("export.adi", "w");
+	sprintf(buff, "export_%d_%d.adi",startID, endID-1);
+   	FILE *export = fopen(buff, "w");
 	if (!export) { fprintf(stderr, "Can't open output file.\n");
 	return 1;
 	} 
