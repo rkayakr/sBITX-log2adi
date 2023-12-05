@@ -6,7 +6,8 @@
  
  written by Bob Benedict, KD8CGH, November 2023 
  
- version 1.1
+ version 1.2
+ changed format of time to drop "00"
  
  released under creative commons license BY
  This license enables reusers to distribute, remix, adapt, and build upon the material in any medium or format, 
