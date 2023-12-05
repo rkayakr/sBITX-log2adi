@@ -4,7 +4,8 @@
 * 
 * written by Bob Benedict, KD8CGH, November 2023 
 * 
-* version 1.1
+* version 1.2
+* some format revision for time on field - dropped "00"
 * 
 * released under creative commons license BY
 * This license enables reusers to distribute, remix, adapt, and build upon the material in any medium or format, 
@@ -121,12 +122,10 @@ static int callback(void *export, int argc, char **argv, char **azColName){
 	char add[91];	
 	char band[5];
 	char rm='-';
-	char rm1=' ';
-	char end[3]="00";
 	float freq;
 	
 // loop over columns, start at i=1 to skip ID number   
-	for(i = 1; i<argc; i++){  
+	for(i = 0; i<argc; i++){  
 	  sprintf(add, "%s ", argv[i]); // write to add buff
 	  lenadd=strlen(add);
 	  if (lenadd > 1) {   // not null case
@@ -137,18 +136,12 @@ static int callback(void *export, int argc, char **argv, char **azColName){
 			freq=atof(add)/1000.0;  // convert kHz to MHz
 			sprintf(add,"%.3f",freq); // write out with 3 decimal digits
 			// note db stores freq as kHz so no more than 3 valid
-			lenadd=strlen(add);
+			lenadd=strlen(add)+1;
 		  }
 		  if (i==3) {
 			removeAll(add, rm);  // reformat date, remove "-"
 			lenadd=strlen(add);
 		  }
-		  if (i==4) {
-			removeAll(add, rm1); // remove trailing space
-			strcat(add,end);  // reformat time to add 00 seconds
-			lenadd=strlen(add);
-		  }
-//	     printf("<%s:%d>%s ", names[i], lenadd-1, add);
 	     fprintf(export,"<%s:%d>%s ", names[i], lenadd-1, add);
 
 		}
@@ -203,10 +196,11 @@ int main(int argc, char* argv[]) {
 		}
 	} while ((endScanned != 1) || (endID < startID));
 
-	endID++; // include endID
+//	endID++; // include endID
+	printf("here I am %d\n",endID);
  
  // open output file  
-	sprintf(buff, "export_%d_%d.adi",startID, endID-1);
+	sprintf(buff, "export_%d_%d.adi",startID, endID);
    	FILE *export = fopen(buff, "w");
 	if (!export) { fprintf(stderr, "Can't open output file.\n");
 	return 1;
